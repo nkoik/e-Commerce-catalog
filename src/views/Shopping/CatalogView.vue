@@ -1,6 +1,5 @@
 <template>
-  <div>Home</div>
-  <RouterView />
+  <div>catalog</div>
 </template>
 
 <script setup lang="ts" generic="T"></script>
