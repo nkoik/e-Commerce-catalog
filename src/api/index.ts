@@ -1,5 +1,9 @@
-import axios, { type AxiosInstance, type AxiosResponse, type AxiosRequestConfig } from 'axios'
-import type { ServiceParams } from '@/api/types/axios'
+import axios, {
+  type AxiosInstance,
+  type AxiosResponse,
+  type AxiosRequestConfig
+} from 'axios'
+import type { ServiceParams } from '@/types/api'
 import { HttpMethod } from '@/enums/axios'
 
 export class HttpService {
@@ -45,7 +49,11 @@ export class HttpService {
   }
 
   // POST request
-  public async push<T, P>(url: string, payload: P, params?: ServiceParams): Promise<T> {
+  public async push<T, P>(
+    url: string,
+    payload: P,
+    params?: ServiceParams
+  ): Promise<T> {
     return this.request<T>(HttpMethod.POST, url, {
       params,
       data: payload

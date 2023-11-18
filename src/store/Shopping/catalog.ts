@@ -1,24 +1,26 @@
 import { getCatalogService } from '@/api/Shopping/services'
-import type { Product } from '@/api/types/catalog'
+import type { CatalogState } from '@/types/store/Shopping/types'
 import { ShoppingStores } from '@/enums/stores'
 import { defineStore } from 'pinia'
-import { reactive, ref, type Ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 
 export const useCatalogStore = defineStore(ShoppingStores.Catalog, () => {
-  const catalog: Array<Product> = reactive([])
-  const isLoading: Ref<boolean> = ref(false)
+  const state: CatalogState = reactive({
+    catalog: [],
+    isLoading: false
+  })
 
   async function getCatalog(): Promise<void> {
-    isLoading.value = true
+    state.isLoading = true
     try {
       const { products } = await getCatalogService()
-      catalog.push(...products)
+      state.catalog.push(...products)
     } catch (error) {
       console.error(error)
     } finally {
-      isLoading.value = false
+      state.isLoading = false
     }
   }
 
-  return { catalog, isLoading, getCatalog }
+  return { ...toRefs(state), getCatalog }
 })

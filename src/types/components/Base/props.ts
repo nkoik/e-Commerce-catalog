@@ -1,0 +1,14 @@
+export type BaseLabelProps = {
+  forId: string
+}
+
+export type BaseInputProps = {
+  modelValue: string | number
+}
+
+export type BaseButtonProps = {
+  type: 'primary' | 'secondary' | 'success' | 'danger' | 'warning'
+  size: 'sm' | 'md' | 'lg'
+  disabled: boolean
+  round: boolean
+}

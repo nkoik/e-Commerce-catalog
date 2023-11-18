@@ -1,3 +1,4 @@
 export const enum ShoppingStores {
-  Catalog = 'catalog'
+  Catalog = 'catalog',
+  Cart = 'cart'
 }
