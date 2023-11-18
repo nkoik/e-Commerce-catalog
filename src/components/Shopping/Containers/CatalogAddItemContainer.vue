@@ -1,14 +1,11 @@
 <template>
   <div class="catalog-add-item-container">
+    <BaseLabel for="kgs">How many kg do you want?</BaseLabel>
     <BaseInput
       id="kgs"
       type="number"
       v-model="search"
-    >
-      <template #label>
-        <BaseLabel for="kgs">How many kg do you want?</BaseLabel>
-      </template>
-    </BaseInput>
+    />
     <BaseButton
       type="secondary"
       size="sm"
@@ -34,11 +31,11 @@ const search: Ref<CartQuantity> = ref(0)
 const cartStore = useCartStore()
 
 const isDisabled = computed((): boolean => {
-  return isFieldEmpty(search.value) || search.value == 0
+  return isFieldEmpty(search.value) || parseFloat(search.value as string) <= 0
 })
 
 function handleAddItem(): void {
-  const quantity = getOnlyNumbersOtherwiseZero(search.value)
+  const quantity = getOnlyNumbersOtherwiseZero(search.value as string)
   if (quantity === 0) return
   const payload: CartItem = {
     catalogItemID: generateGuid(16),

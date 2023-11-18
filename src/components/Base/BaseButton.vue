@@ -27,7 +27,8 @@ const colorClasses = computed((): string => {
     danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800',
     warning:
       'bg-yellow-600 text-white-100 hover:bg-yellow-700 active:bg-yellow-800',
-    disabled: 'bg-gray-200 text-white-100 cursor-not-allowed'
+    light: 'bg-gray-200 text-white-100',
+    disabled: 'bg-gray-100 text-white'
   }
   return (
     colorMappings[props.disabled ? 'disabled' : props.type] ||

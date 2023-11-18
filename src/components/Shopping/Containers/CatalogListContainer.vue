@@ -12,7 +12,9 @@
         />
       </li>
     </ul>
-    <div></div>
+    <div class="catalog-overview">
+      <slot name="overview" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,7 @@ import { useCatalogStore } from '@/store/Shopping/catalog'
 const catalogStore = useCatalogStore()
 
 onMounted(() => {
+  if (catalogStore.catalog.length > 0) return
   catalogStore.getCatalog()
 })
 </script>

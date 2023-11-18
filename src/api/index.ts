@@ -3,7 +3,7 @@ import axios, {
   type AxiosResponse,
   type AxiosRequestConfig
 } from 'axios'
-import type { ServiceParams } from '@/types/api'
+import type { ServiceParams } from '@/types/api/axios'
 import { HttpMethod } from '@/enums/axios'
 
 export class HttpService {

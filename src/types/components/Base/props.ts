@@ -12,3 +12,11 @@ export type BaseButtonProps = {
   disabled: boolean
   round: boolean
 }
+
+export type BaseStepsProps = {
+  steps: Array<{
+    title: string
+    step: number
+  }>
+  currentStep: number
+}

@@ -8,3 +8,8 @@ export type CatalogState = {
 export type CartState = {
   cart: Array<CartItem>
 }
+
+export type CartTotals = {
+  totalPrice: number
+  totalItems: number
+}
