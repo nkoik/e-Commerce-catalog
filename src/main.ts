@@ -1,3 +1,4 @@
+import { registerBaseComponents } from '@/components/Base/registerComponents'
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -10,5 +11,7 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+
+registerBaseComponents(app)
 
 app.mount('#app')
