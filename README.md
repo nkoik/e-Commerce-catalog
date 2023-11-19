@@ -6,6 +6,7 @@
 - Pinia
 - Vitest
 - Vue Router
+- Tailwind
 - nvm version 20.9.0
 
 ## Patterns & Naming
@@ -13,6 +14,7 @@
 ### Patterns
 
 We use Presentational-Container pattern along with hooks(composables).
+We use tailwind for styling the layout. Do not use scoped or globally classes
 
 ### Naming
 
