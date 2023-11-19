@@ -10,7 +10,7 @@ import type { CartItem } from '@/types/components/Shopping/common'
 import { useCatalogStore } from '@/store/Shopping/catalog'
 import { useVoucherStore } from '@/store/Shopping/voucher'
 import { withDiscount } from '@/helpers/calculations'
-import { totalPrice } from '@/helpers/calculations'
+import { calculate } from '@/helpers/calculations'
 
 export const useCartStore = defineStore(ShoppingStores.Cart, () => {
   const catalogStore = useCatalogStore()
@@ -37,12 +37,20 @@ export const useCartStore = defineStore(ShoppingStores.Cart, () => {
     return withDiscount(
       cartItems.value.reduce(
         (acc, item) => {
-          acc.totalPrice += totalPrice(item.price, Number(item.quantity))
+          acc.totalPrice += calculate(
+            item.price,
+            Number(item.quantity),
+            'multiply'
+          )
           acc.totalItems += Number(item.quantity)
           if (!acc[item.cartItemID]) {
             acc[item.cartItemID] = 0
           }
-          acc[item.cartItemID] += totalPrice(item.price, Number(item.quantity))
+          acc[item.cartItemID] += calculate(
+            item.price,
+            Number(item.quantity),
+            'multiply'
+          )
           return acc
         },
         { totalPrice: 0, totalItems: 0 }

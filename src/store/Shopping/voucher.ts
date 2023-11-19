@@ -3,9 +3,11 @@ import { defineStore } from 'pinia'
 import { computed, reactive, toRefs } from 'vue'
 import type { VoucherState } from '@/types/store/Shopping/types'
 import type { Voucher } from '@/types/components/Shopping/Containers/props'
+import { VOUCHERS } from '@/api/mockdata/vouchers'
 
 export const useVoucherStore = defineStore(ShoppingStores.Voucher, () => {
   const state: VoucherState = reactive({
+    vouchers: VOUCHERS,
     voucher: '',
     data: {}
   })

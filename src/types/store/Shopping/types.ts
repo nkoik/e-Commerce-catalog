@@ -1,4 +1,7 @@
-import type { Voucher } from '@/types/components/Shopping/Containers/props'
+import type {
+  Voucher,
+  Vouchers
+} from '@/types/components/Shopping/Containers/props'
 import type { CatalogItem, CartItem } from '@/types/components/Shopping/common'
 
 export type CatalogState = {
@@ -17,6 +20,7 @@ export type CartTotals = {
 }
 
 export type VoucherState = {
+  vouchers: Vouchers
   voucher: string
   data: Voucher | {}
 }

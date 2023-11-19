@@ -5,7 +5,9 @@
   >
     <template #list="{ catalogItemID, price, name, quantity }">
       <CartListItem
-        :price="`${centsToEuros(totalPrice(price, quantity))} Euro/kg`"
+        :price="`${centsToEuros(
+          calculate(price, quantity, 'multiply')
+        )} Euro/kg`"
         :title="name"
         :quantity="quantity"
       >
@@ -25,7 +27,7 @@
 <script setup lang="ts">
 import CartList from '@/components/Shopping/Presentational/CartList.vue'
 import CartListItem from '@/components/Shopping/Presentational/CartListItem.vue'
-import { centsToEuros, totalPrice } from '@/helpers/calculations'
+import { centsToEuros, calculate } from '@/helpers/calculations'
 import { useCartStore } from '@/store/Shopping/cart'
 
 const cartStore = useCartStore()
