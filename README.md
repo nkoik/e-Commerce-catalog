@@ -6,6 +6,7 @@
 - Pinia
 - Vitest
 - Vue Router
+- nvm version 20.9.0
 
 ## Patterns & Naming
 
