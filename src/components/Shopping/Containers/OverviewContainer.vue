@@ -27,7 +27,9 @@ const listItems = computed(() => {
     },
     {
       title: 'Total Price',
-      value: `${centsToEuros(cartStore.cartTotalPriceAndItems.totalPrice)} Euro`
+      value: `${centsToEuros(
+        cartStore.cartTotalPriceAndItems.totalPrice
+      ).toFixed(2)} Euro`
     }
   ]
 })

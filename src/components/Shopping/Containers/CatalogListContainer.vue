@@ -1,21 +1,16 @@
 <template>
-  <div class="catalog-container">
-    <ul class="catalog-list">
-      <li
-        v-for="(item, index) in catalogStore.catalog"
-        :key="item.id"
-        :class="[`catalog-list__item-${index}`]"
-      >
-        <slot
-          name="list"
-          v-bind="item"
-        />
-      </li>
-    </ul>
-    <div class="catalog-overview">
-      <slot name="overview" />
-    </div>
-  </div>
+  <ul class="catalog-list">
+    <li
+      v-for="(item, index) in catalogStore.catalog"
+      :key="item.id"
+      :class="[`catalog-list__item-${index}`]"
+    >
+      <slot
+        name="list"
+        v-bind="item"
+      />
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">

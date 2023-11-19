@@ -4,6 +4,7 @@ export type BaseLabelProps = {
 
 export type BaseInputProps = {
   modelValue: string | number
+  error: boolean
 }
 
 export type BaseButtonProps = {

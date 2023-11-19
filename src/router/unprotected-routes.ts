@@ -26,7 +26,8 @@ export const unprotectedRoutes: Array<RouteRecordRaw> = [
         component: () => shoppingViews(Router_Component.Cart),
         meta: {
           title: 'Cart',
-          step: 2
+          step: 2,
+          guard: true
         } as RouteStepMeta
       },
       {
@@ -35,7 +36,8 @@ export const unprotectedRoutes: Array<RouteRecordRaw> = [
         component: () => shoppingViews(Router_Component.Checkout),
         meta: {
           title: 'Checkout',
-          step: 3
+          step: 3,
+          guard: true
         } as RouteStepMeta
       }
     ]

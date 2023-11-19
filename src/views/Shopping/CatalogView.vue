@@ -15,7 +15,7 @@
         </CatalogListItem>
       </template>
     </CatalogListContainer>
-    <CatalogOverviewContainer />
+    <OverviewContainer />
   </section>
 </template>
 
@@ -23,6 +23,6 @@
 import CatalogListContainer from '@/components/Shopping/Containers/CatalogListContainer.vue'
 import CatalogAddItemContainer from '@/components/Shopping/Containers/CatalogAddItemContainer.vue'
 import CatalogListItem from '@/components/Shopping/Presentational/CatalogListItem.vue'
-import CatalogOverviewContainer from '@/components/Shopping/Containers/CatalogOverviewContainer.vue'
+import OverviewContainer from '@/components/Shopping/Containers/OverviewContainer.vue'
 import { centsToEuros } from '@/helpers/calculations'
 </script>

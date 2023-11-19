@@ -9,7 +9,10 @@
     />
     <NavigationButtons
       :has-previous="currentRouteStep > minStep"
-      :has-next="currentRouteStep < maxStep"
+      :has-next="
+        currentRouteStep < maxStep &&
+        cartStore.cartTotalPriceAndItems.totalPrice > 0
+      "
       @previous="handleNavigateToStep(currentRouteStep - 1)"
       @next="handleNavigateToStep(currentRouteStep + 1)"
     />
@@ -19,7 +22,9 @@
 <script setup lang="ts">
 import NavigationButtons from '@/components/Shopping/Presentational/NavigationButtons.vue'
 import { useNavigationBetweenSteps } from '@/composables/navigationBetweenSteps'
+import { useCartStore } from '@/store/Shopping/cart'
 
 const { routeSteps, currentRouteStep, minStep, maxStep, handleNavigateToStep } =
   useNavigationBetweenSteps()
+const cartStore = useCartStore()
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="catalog-add-item-container">
-    <BaseLabel for="kgs">How many kg do you want?</BaseLabel>
+    <BaseLabel :for="id">Quantity (kg)</BaseLabel>
     <BaseInput
-      id="kgs"
+      :id="id"
       type="number"
-      v-model="search"
+      v-model="quantityText"
     />
     <BaseButton
       type="secondary"
@@ -27,22 +27,25 @@ import {
 } from '@/helpers/validations'
 
 const props = defineProps<CatalogAddItemContainerProps>()
-const search: Ref<CartQuantity> = ref(0)
+const quantityText: Ref<CartQuantity> = ref(0)
 const cartStore = useCartStore()
 
 const isDisabled = computed((): boolean => {
-  return isFieldEmpty(search.value) || parseFloat(search.value as string) <= 0
+  return (
+    isFieldEmpty(quantityText.value) ||
+    parseFloat(quantityText.value as string) <= 0
+  )
 })
 
 function handleAddItem(): void {
-  const quantity = getOnlyNumbersOtherwiseZero(search.value as string)
+  const quantity = getOnlyNumbersOtherwiseZero(quantityText.value as string)
   if (quantity === 0) return
   const payload: CartItem = {
     catalogItemID: generateGuid(16),
     quantity,
     cartItemID: props.id
   }
-  cartStore.setCartItems(payload)
-  search.value = 0
+  cartStore.setCartItem(payload)
+  quantityText.value = 0
 }
 </script>

@@ -1,17 +1,25 @@
 import { ShoppingStores } from '@/enums/stores'
 import { defineStore } from 'pinia'
 import { computed, reactive, toRefs } from 'vue'
-import type { CartState, CartTotals } from '@/types/store/Shopping/types'
+import type {
+  CartItemWithCatalogItem,
+  CartState,
+  CartTotals
+} from '@/types/store/Shopping/types'
 import type { CartItem } from '@/types/components/Shopping/common'
 import { useCatalogStore } from '@/store/Shopping/catalog'
+import { useVoucherStore } from '@/store/Shopping/voucher'
+import { withDiscount } from '@/helpers/calculations'
+import { totalPrice } from '@/helpers/calculations'
 
 export const useCartStore = defineStore(ShoppingStores.Cart, () => {
   const catalogStore = useCatalogStore()
+  const voucherStore = useVoucherStore()
   const state: CartState = reactive({
     cart: []
   })
 
-  const cartItems = computed(() => {
+  const cartItems = computed((): CartItemWithCatalogItem => {
     return state.cart.map((item) => {
       const catalogItemFound = catalogStore.catalog.find(
         ({ id }) => id === item.cartItemID
@@ -26,29 +34,36 @@ export const useCartStore = defineStore(ShoppingStores.Cart, () => {
   })
 
   const cartTotalPriceAndItems = computed((): CartTotals => {
-    return cartItems.value.reduce(
-      (acc, item) => {
-        acc.totalPrice += item.price * Number(item.quantity)
-        acc.totalItems += Number(item.quantity)
-        return acc
-      },
-      { totalPrice: 0, totalItems: 0 }
+    return withDiscount(
+      cartItems.value.reduce(
+        (acc, item) => {
+          acc.totalPrice += totalPrice(item.price, Number(item.quantity))
+          acc.totalItems += Number(item.quantity)
+          if (!acc[item.cartItemID]) {
+            acc[item.cartItemID] = 0
+          }
+          acc[item.cartItemID] += totalPrice(item.price, Number(item.quantity))
+          return acc
+        },
+        { totalPrice: 0, totalItems: 0 }
+      ),
+      voucherStore.data
     )
   })
 
-  function setCartItems(item: CartItem) {
+  function setCartItem(item: CartItem) {
     state.cart.push(item)
   }
 
-  function deleteCartItems(guid: string) {
-    state.cart = state.cart.filter((item) => item.cartItemID !== guid)
+  function removeCartItem(guid: string) {
+    state.cart = state.cart.filter((item) => item.catalogItemID !== guid)
   }
 
   return {
     ...toRefs(state),
     cartItems,
     cartTotalPriceAndItems,
-    setCartItems,
-    deleteCartItems
+    setCartItem,
+    removeCartItem
   }
 })
