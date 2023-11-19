@@ -1,4 +1,11 @@
-# catalog
+# Catalog app
+
+- Vue 3
+- Typescript
+- Vite
+- Pinia
+- Vitest
+- Vue Router
 
 ## Patterns & Naming
 
