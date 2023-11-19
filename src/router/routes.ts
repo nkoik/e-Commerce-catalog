@@ -1,15 +1,15 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { Router_Name, Router_Component, Router_Path } from '@/enums/router'
-import HomeView from '@/views/HomeView.vue'
+import ShoppingView from '@/views/ShoppingView.vue'
 import { shoppingViews } from '@/router/lazy-loading'
 import type { RouteStepMeta } from '@/types/router/types'
 
-export const unprotectedRoutes: Array<RouteRecordRaw> = [
+export const protectedRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: Router_Name.Home,
+    name: Router_Name.Shopping,
     redirect: { name: Router_Name.Catalog },
-    component: HomeView,
+    component: ShoppingView,
     children: [
       {
         path: Router_Path.Catalog,
@@ -27,7 +27,7 @@ export const unprotectedRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'Cart',
           step: 2,
-          guard: true
+          guard: Router_Name.Shopping
         } as RouteStepMeta
       },
       {
@@ -37,10 +37,18 @@ export const unprotectedRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'Checkout',
           step: 3,
-          guard: true
+          guard: Router_Name.Shopping
         } as RouteStepMeta
       }
     ]
+  },
+  {
+    path: Router_Path.CheckoutSuccess,
+    name: Router_Name.CheckoutSuccess,
+    component: () => shoppingViews(Router_Component.CheckoutSuccess),
+    meta: {
+      guard: Router_Name.Shopping
+    }
   }
 ]
 

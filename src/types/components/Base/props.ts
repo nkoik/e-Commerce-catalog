@@ -12,6 +12,7 @@ export type BaseButtonProps = {
   size: 'sm' | 'md' | 'lg'
   disabled: boolean
   round: boolean
+  loading: boolean
 }
 
 export type BaseStepsProps = {
@@ -20,4 +21,16 @@ export type BaseStepsProps = {
     step: number
   }>
   currentStep: number
+}
+
+export type BaseSelectProps = {
+  modelValue: string
+  error: boolean
+  options:
+    | Array<{
+        value: string
+        label: string
+      }>
+    | []
+  selected: string
 }

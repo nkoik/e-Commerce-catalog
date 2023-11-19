@@ -1,12 +1,28 @@
-import { type App } from 'vue'
-import BaseLabel from '@/components/Base/BaseLabel.vue'
-import BaseInput from '@/components/Base/BaseInput.vue'
-import BaseButton from '@/components/Base/BaseButton.vue'
-import BaseSteps from '@/components/Base/BaseSteps.vue'
+import { defineAsyncComponent, type App } from 'vue'
 
 export const registerBaseComponents = (app: App): void => {
-  app.component('BaseInput', BaseInput)
-  app.component('BaseLabel', BaseLabel)
-  app.component('BaseButton', BaseButton)
-  app.component('BaseSteps', BaseSteps)
+  app.component(
+    'BaseLabel',
+    defineAsyncComponent(() => import('@/components/Base/BaseLabel.vue'))
+  )
+  app.component(
+    'BaseInput',
+    defineAsyncComponent(() => import('@/components/Base/BaseInput.vue'))
+  )
+  app.component(
+    'BaseButton',
+    defineAsyncComponent(() => import('@/components/Base/BaseButton.vue'))
+  )
+  app.component(
+    'BaseSteps',
+    defineAsyncComponent(() => import('@/components/Base/BaseSteps.vue'))
+  )
+  app.component(
+    'BaseSelect',
+    defineAsyncComponent(() => import('@/components/Base/BaseSelect.vue'))
+  )
+  app.component(
+    'BaseError',
+    defineAsyncComponent(() => import('@/components/Base/BaseError.vue'))
+  )
 }

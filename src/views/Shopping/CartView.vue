@@ -9,7 +9,15 @@
 </template>
 
 <script setup lang="ts">
-import CartListContainer from '@/components/Shopping/Containers/CartListContainer.vue'
-import OverviewContainer from '@/components/Shopping/Containers/OverviewContainer.vue'
-import VoucherContainer from '@/components/Shopping/Containers/VoucherContainer.vue'
+import { defineAsyncComponent } from 'vue'
+
+const CartListContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/CartListContainer.vue')
+)
+const OverviewContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/OverviewContainer.vue')
+)
+const VoucherContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/VoucherContainer.vue')
+)
 </script>

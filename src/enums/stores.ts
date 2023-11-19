@@ -1,5 +1,6 @@
 export const enum ShoppingStores {
   Catalog = 'catalog',
   Cart = 'cart',
-  Voucher = 'voucher'
+  Voucher = 'voucher',
+  Checkout = 'checkout'
 }

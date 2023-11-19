@@ -1,19 +1,22 @@
 export const enum Router_Name {
-  Home = 'home',
+  Shopping = 'shopping',
   Catalog = 'catalog',
   Cart = 'cart',
-  Checkout = 'checkout'
+  Checkout = 'checkout',
+  CheckoutSuccess = 'checkout-success'
 }
 
 export const enum Router_Component {
-  Home = 'HomeView',
+  Shopping = 'ShoppingView',
   Catalog = 'CatalogView',
   Cart = 'CartView',
-  Checkout = 'CheckoutView'
+  Checkout = 'CheckoutView',
+  CheckoutSuccess = 'CheckoutSuccessView'
 }
 
 export const enum Router_Path {
   Catalog = 'catalog',
   Cart = 'cart',
-  Checkout = 'checkout'
+  Checkout = 'checkout',
+  CheckoutSuccess = '/checkout-success'
 }

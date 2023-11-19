@@ -2,9 +2,16 @@
   <button
     v-bind="attrs"
     :class="btnClasses"
-    :disabled="props.disabled"
+    :disabled="disabled || loading"
   >
-    <slot></slot>
+    <div class="flex justify-center items-center gap-2">
+      <span
+        v-if="loading"
+        class="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-gray-400"
+      >
+      </span>
+      <slot />
+    </div>
   </button>
 </template>
 
@@ -16,7 +23,8 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
   type: 'primary',
   size: 'md',
   disabled: false,
-  round: false
+  round: false,
+  loading: false
 })
 
 const colorClasses = computed((): string => {
@@ -31,7 +39,7 @@ const colorClasses = computed((): string => {
     disabled: 'bg-gray-200 text-white'
   }
   return (
-    colorMappings[props.disabled ? 'disabled' : props.type] ||
+    colorMappings[props.disabled || props.loading ? 'disabled' : props.type] ||
     colorMappings.primary
   )
 })

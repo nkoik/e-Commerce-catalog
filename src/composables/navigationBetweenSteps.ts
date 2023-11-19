@@ -9,7 +9,7 @@ export function useNavigationBetweenSteps() {
   const routeSteps = computed(() => {
     let steps: Array<RouteStepMeta & { name: string }> = []
     const routeFound = router.currentRoute.value.matched.find(
-      (route) => route.name === Router_Name.Home
+      (route) => route.name === Router_Name.Shopping
     )
     if (routeFound) {
       steps = routeFound.children.map((childRoute) => ({

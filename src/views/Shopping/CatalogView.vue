@@ -14,15 +14,32 @@
           </template>
         </CatalogListItem>
       </template>
+      <template #loading>
+        <CatalogListContainerSkeleton />
+      </template>
     </CatalogListContainer>
     <OverviewContainer />
   </section>
 </template>
 
 <script setup lang="ts">
-import CatalogListContainer from '@/components/Shopping/Containers/CatalogListContainer.vue'
-import CatalogAddItemContainer from '@/components/Shopping/Containers/CatalogAddItemContainer.vue'
-import CatalogListItem from '@/components/Shopping/Presentational/CatalogListItem.vue'
-import OverviewContainer from '@/components/Shopping/Containers/OverviewContainer.vue'
+import { defineAsyncComponent } from 'vue'
+const CatalogListContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/CatalogListContainer.vue')
+)
+const CatalogAddItemContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/CatalogAddItemContainer.vue')
+)
+const CatalogListItem = defineAsyncComponent(
+  () => import('@/components/Shopping/Presentational/CatalogListItem.vue')
+)
+const OverviewContainer = defineAsyncComponent(
+  () => import('@/components/Shopping/Containers/OverviewContainer.vue')
+)
+const CatalogListContainerSkeleton = defineAsyncComponent(
+  () =>
+    import('@/components/Shopping/Skeletons/CatalogListContainerSkeleton.vue')
+)
+
 import { centsToEuros } from '@/helpers/calculations'
 </script>

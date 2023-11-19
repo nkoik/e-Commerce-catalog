@@ -1,8 +1,5 @@
 import type { Voucher } from '@/types/components/Shopping/Containers/props'
-import type {
-  CartItemWithCatalogItem,
-  CartTotals
-} from '@/types/store/Shopping/types'
+import type { CartTotals } from '@/types/store/Shopping/types'
 
 export function centsToEuros(cents: number): number {
   if (cents < 0 || isNaN(cents)) {

@@ -1,5 +1,8 @@
 <template>
-  <ul class="catalog-list">
+  <ul
+    v-if="!catalogStore.isLoading"
+    class="catalog-list"
+  >
     <li
       v-for="(item, index) in catalogStore.catalog"
       :key="item.id"
@@ -11,6 +14,9 @@
       />
     </li>
   </ul>
+  <template v-else>
+    <slot name="loading" />
+  </template>
 </template>
 
 <script setup lang="ts">

@@ -14,7 +14,7 @@
         :error="hasErrors"
       >
         <template #error>
-          <span>Invalid voucher</span>
+          <BaseError>Invalid voucher</BaseError>
         </template>
       </BaseInput>
       <BaseButton

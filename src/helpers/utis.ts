@@ -8,3 +8,10 @@ export function generateGuid(numberOfCharacters: number = 10): string {
   }
   return result
 }
+
+export function formatCardNumber(value: string) {
+  return value
+    .replace(/\W/gi, '')
+    .replace(/(.{4})/g, '$1 ')
+    .trim()
+}

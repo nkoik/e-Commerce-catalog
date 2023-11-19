@@ -26,3 +26,9 @@ export type VoucherState = {
 }
 
 export type CartItemWithCatalogItem = CartItem & Partial<CatalogItem>
+
+export type CheckoutState = {
+  errors: Record<string, string>
+  isLoading: boolean
+  inputData: Record<string, string>
+}
