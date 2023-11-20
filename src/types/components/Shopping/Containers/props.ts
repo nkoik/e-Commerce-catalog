@@ -16,6 +16,7 @@ export type Vouchers = {
   readonly ILIKEAPPLES: Voucher
   readonly ILIKEPEARS: Voucher
   readonly GREEN: Voucher
+  [key: string]: Voucher
 }
 
 type CartFormContainerKeyProps =

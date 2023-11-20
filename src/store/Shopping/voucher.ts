@@ -16,8 +16,15 @@ export const useVoucherStore = defineStore(ShoppingStores.Voucher, () => {
     return Object.keys(state.data).length > 0
   })
 
+  const hasError = computed((): boolean => {
+    return state.voucher !== '' && !isSelected.value
+  })
+
   function setVoucher(voucher: string) {
     state.voucher = voucher
+    if (voucher in state.vouchers) {
+      setDiscount(state.vouchers[voucher])
+    }
   }
 
   function setDiscount(data: Voucher) {
@@ -34,6 +41,7 @@ export const useVoucherStore = defineStore(ShoppingStores.Voucher, () => {
     setDiscount,
     removeDiscount,
     setVoucher,
-    isSelected
+    isSelected,
+    hasError
   }
 })

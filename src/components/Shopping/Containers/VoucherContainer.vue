@@ -11,7 +11,7 @@
         type="text"
         v-model="voucherText"
         :disabled="voucherStore.isSelected"
-        :error="hasErrors"
+        :error="voucherStore.hasError"
       >
         <template #error>
           <BaseError>Invalid voucher</BaseError>
@@ -35,28 +35,17 @@
 <script setup lang="ts">
 import { isFieldEmpty } from '@/helpers/validations'
 import { useVoucherStore } from '@/store/Shopping/voucher'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
-const hasErrors = ref(false)
-const voucherText = computed({
-  get: () => voucherStore.voucher,
-  set: (value) => {
-    voucherStore.setVoucher(value)
-  }
-})
+const voucherText = ref('')
 const voucherStore = useVoucherStore()
 
 function handleAddVoucher() {
-  if (voucherText.value in voucherStore.vouchers) {
-    voucherStore.setDiscount(voucherStore.vouchers[voucherText.value])
-    hasErrors.value = false
-  } else {
-    hasErrors.value = true
-  }
+  voucherStore.setVoucher(voucherText.value)
 }
 
 function handleRemoveVoucher() {
-  hasErrors.value = false
+  voucherText.value = ''
   voucherStore.removeDiscount()
 }
 </script>
