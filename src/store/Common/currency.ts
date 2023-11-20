@@ -1,7 +1,7 @@
 import { CommonStores } from '@/enums/stores'
 import { defineStore } from 'pinia'
 import { computed, reactive, toRefs } from 'vue'
-import type { CurrencyState } from '@/types/store/Common/types'
+import type { Currency, CurrencyState } from '@/types/store/Common/types'
 import CurrencyFormatter from '@/helpers/currency'
 import { calculate } from '@/helpers/calculations'
 
@@ -33,7 +33,7 @@ export const useCurrencyStore = defineStore(CommonStores.Currency, () => {
     state.locale = locale
   }
 
-  function changeCurrency(currency: string): void {
+  function changeCurrency(currency: Currency): void {
     state.currency = currency
   }
 

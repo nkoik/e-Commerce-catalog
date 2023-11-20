@@ -1,4 +1,4 @@
-type Currency = 'EUR' | 'USD' | 'GBP'
+export type Currency = 'EUR' | 'USD' | 'GBP'
 
 export type CurrencyState = {
   locale: string
