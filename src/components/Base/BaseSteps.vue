@@ -61,7 +61,7 @@
 import type { BaseStepsProps } from '@/types/components/Base/props'
 
 withDefaults(defineProps<BaseStepsProps>(), {
-  steps: [
+  steps: () => [
     {
       title: 'Title',
       step: 1

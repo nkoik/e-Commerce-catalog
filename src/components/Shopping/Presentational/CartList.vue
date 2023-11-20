@@ -22,6 +22,6 @@ import type { CartListProps } from '@/types/components/Shopping/Presentational/p
 
 withDefaults(defineProps<CartListProps>(), {
   title: 'Title',
-  items: []
+  items: () => []
 })
 </script>

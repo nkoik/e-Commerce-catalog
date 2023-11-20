@@ -12,6 +12,7 @@ export function useNavigationBetweenSteps() {
       (route) => route.name === Router_Name.Shopping
     )
     if (routeFound) {
+      /* @ts-ignore */
       steps = routeFound.children.map((childRoute) => ({
         ...childRoute.meta,
         name: childRoute.name

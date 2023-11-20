@@ -1,5 +1,5 @@
 import { HttpService } from '@/api'
-import type { Catalog } from '@/api/types/catalog'
+import type { Catalog } from '@/types/api/catalog'
 import { ShoppingEndpoints } from '@/enums/endpoints'
 
 export async function getCatalogService() {

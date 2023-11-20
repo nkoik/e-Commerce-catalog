@@ -48,12 +48,15 @@ export function withDiscount(
     return cartItems
   }
 
+  // @ts-ignore
   if (voucherData.discountOn === 'total') {
     return {
       ...cartItems,
       totalPrice: calculateDiscount(
         cartItems.totalPrice,
+        /* @ts-ignore */
         voucherData.type,
+        /* @ts-ignore */
         voucherData.value
       )
     }
@@ -61,10 +64,13 @@ export function withDiscount(
 
   return Object.keys(cartItems).reduce(
     (acc, key) => {
+      /* @ts-ignore */
       if (voucherData.discountOn.includes(key)) {
         acc[key] = calculateDiscount(
           cartItems[key],
+          /* @ts-ignore */
           voucherData.type,
+          /* @ts-ignore */
           voucherData.value
         )
       } else if (key !== 'totalPrice') {

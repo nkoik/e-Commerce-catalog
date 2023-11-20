@@ -45,7 +45,7 @@ defineOptions({
 withDefaults(defineProps<BaseSelectProps>(), {
   modelValue: '',
   error: false,
-  options: [],
+  options: () => [],
   selectedId: ''
 })
 const emit = defineEmits<{

@@ -19,7 +19,7 @@ export const useCartStore = defineStore(ShoppingStores.Cart, () => {
     cart: []
   })
 
-  const cartItems = computed((): CartItemWithCatalogItem => {
+  const cartItems = computed((): CartItemWithCatalogItem[] => {
     return state.cart.map((item) => {
       const catalogItemFound = catalogStore.catalog.find(
         ({ id }) => id === item.cartItemID
@@ -36,9 +36,9 @@ export const useCartStore = defineStore(ShoppingStores.Cart, () => {
   const cartTotalPriceAndItems = computed((): CartTotals => {
     return withDiscount(
       cartItems.value.reduce(
-        (acc, item) => {
+        (acc: CartTotals, item) => {
           acc.totalPrice += calculate(
-            item.price,
+            item.price as number,
             Number(item.quantity),
             'multiply'
           )
@@ -47,7 +47,7 @@ export const useCartStore = defineStore(ShoppingStores.Cart, () => {
             acc[item.cartItemID] = 0
           }
           acc[item.cartItemID] += calculate(
-            item.price,
+            item.price as number,
             Number(item.quantity),
             'multiply'
           )

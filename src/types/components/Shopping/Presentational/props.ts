@@ -1,4 +1,5 @@
 import type { CartQuantity } from '@/types/components/Shopping/common'
+import type { CartItemWithCatalogItem } from '@/types/store/Shopping/types'
 
 export type CatalogListItemProps = {
   title: string
@@ -11,9 +12,11 @@ export type CartListItemProps = Partial<CatalogListItemProps> & {
 
 export type CartListProps = {
   title: string
-  items: Array<{
-    [key: string]: any
-  }>
+  items:
+    | Array<{
+        [key: string]: any
+      }>
+    | []
 }
 
 export type NavigationButtonsProps = {
