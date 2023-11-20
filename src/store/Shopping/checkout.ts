@@ -1,5 +1,5 @@
 import { ShoppingStores } from '@/enums/stores'
-import { creditCardFields, validateField } from '@/helpers/validations'
+import { checkoutFieldRules, validateField } from '@/helpers/validations'
 import type { CheckoutState } from '@/types/store/Shopping/types'
 import { defineStore } from 'pinia'
 import { computed, reactive, toRefs } from 'vue'
@@ -16,7 +16,7 @@ export const useCheckoutStore = defineStore(ShoppingStores.Checkout, () => {
   })
 
   function setErrors(type: string) {
-    const errorMessage = validateField(creditCardFields, {
+    const errorMessage = validateField(checkoutFieldRules, {
       [type]: state.inputData[type]
     })
     if (Object.keys(errorMessage).length) {

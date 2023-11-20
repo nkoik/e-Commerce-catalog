@@ -5,9 +5,10 @@
   >
     <template #list="{ catalogItemID, price, name, quantity }">
       <CartListItem
-        :price="`${centsToEuros(
-          calculate(price, quantity, 'multiply')
-        )} Euro/kg`"
+        :price="`${currencyStore.format(
+          calculate(price, quantity, 'multiply'),
+          true
+        )}/kg`"
         :title="name"
         :quantity="quantity"
       >
@@ -27,10 +28,12 @@
 <script setup lang="ts">
 import CartList from '@/components/Shopping/Presentational/CartList.vue'
 import CartListItem from '@/components/Shopping/Presentational/CartListItem.vue'
-import { centsToEuros, calculate } from '@/helpers/calculations'
+import { calculate } from '@/helpers/calculations'
+import { useCurrencyStore } from '@/store/Common/currency'
 import { useCartStore } from '@/store/Shopping/cart'
 
 const cartStore = useCartStore()
+const currencyStore = useCurrencyStore()
 
 function handleRemoveCartItem(id: string) {
   cartStore.removeCartItem(id)

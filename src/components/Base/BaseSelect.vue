@@ -3,7 +3,7 @@
     <select
       :id="attrs.id as string"
       :ref="`select-${attrs.id}`"
-      class="cursor-pointer border-2 hover:border-indigo-300 px-2 py-2 leading-normal block w-full text-gray-800 bg-white font-sans rounded-lg text-left appearance-none outline-none"
+      class="cursor-pointer border-2 hover:border-indigo-300 leading-normal block w-full text-gray-800 bg-white font-sans rounded-lg text-left outline-none"
       :class="[error ? 'border-red-400' : 'border-gray-400']"
       :type="attrs.type as string"
       :value="modelValue"

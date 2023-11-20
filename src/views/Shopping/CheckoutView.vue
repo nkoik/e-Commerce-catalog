@@ -25,7 +25,7 @@
         }"
       >
         <template #footer>
-          <CheckoutPayContainer class="w-full mt-4" />
+          <CheckoutPayButtonContainer class="w-full mt-4" />
         </template>
       </CheckoutFormContainer>
     </aside>
@@ -37,8 +37,9 @@ import { defineAsyncComponent } from 'vue'
 const CheckoutFormContainer = defineAsyncComponent(
   () => import('@/components/Shopping/Containers/CheckoutFormContainer.vue')
 )
-const CheckoutPayContainer = defineAsyncComponent(
-  () => import('@/components/Shopping/Containers/CheckoutPayContainer.vue')
+const CheckoutPayButtonContainer = defineAsyncComponent(
+  () =>
+    import('@/components/Shopping/Containers/CheckoutPayButtonContainer.vue')
 )
 const OverviewContainer = defineAsyncComponent(
   () => import('@/components/Shopping/Containers/OverviewContainer.vue')

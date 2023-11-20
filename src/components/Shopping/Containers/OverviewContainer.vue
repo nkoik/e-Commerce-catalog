@@ -21,13 +21,15 @@
 <script setup lang="ts">
 import CartList from '@/components/Shopping/Presentational/CartList.vue'
 import CartListItem from '@/components/Shopping/Presentational/CartListItem.vue'
-import { centsToEuros } from '@/helpers/calculations'
 import { useCartStore } from '@/store/Shopping/cart'
 import { useVoucherStore } from '@/store/Shopping/voucher'
+import { useCurrencyStore } from '@/store/Common/currency'
 import { computed } from 'vue'
 
 const cartStore = useCartStore()
 const voucherStore = useVoucherStore()
+const currencyStore = useCurrencyStore()
+
 const listItems = computed(() => {
   return [
     {
@@ -36,9 +38,10 @@ const listItems = computed(() => {
     },
     {
       title: 'Total Price',
-      value: `${centsToEuros(
-        cartStore.cartTotalPriceAndItems.totalPrice
-      ).toFixed(2)} Euro`
+      value: currencyStore.format(
+        cartStore.cartTotalPriceAndItems.totalPrice,
+        true
+      )
     }
   ]
 })

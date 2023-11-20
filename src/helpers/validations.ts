@@ -26,12 +26,12 @@ export function validateField(
   return errors
 }
 
-export const creditCardFields: Record<
+export const checkoutFieldRules: Record<
   string,
   { rule: RegExp | Function; message: string }
 > = {
   cardNumber: {
-    rule: /^(\d{4}\s?){3}(\d{4}\s?)?$/,
+    rule: /^(\d{4}\s?){4}$/,
     message: 'Only digits and spaces allowed'
   },
   cardHolder: {

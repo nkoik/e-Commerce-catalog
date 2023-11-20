@@ -4,3 +4,7 @@ export const enum ShoppingStores {
   Voucher = 'voucher',
   Checkout = 'checkout'
 }
+
+export const enum CommonStores {
+  Currency = 'currency'
+}

@@ -3,7 +3,7 @@
     <CatalogListContainer class="md:overflow-auto">
       <template #list="{ id, price, name }">
         <CatalogListItem
-          :price="`${centsToEuros(price)} Euro/kg`"
+          :price="`${price}/kg`"
           :title="name"
         >
           <template #input>
@@ -40,6 +40,4 @@ const CatalogListContainerSkeleton = defineAsyncComponent(
   () =>
     import('@/components/Shopping/Skeletons/CatalogListContainerSkeleton.vue')
 )
-
-import { centsToEuros } from '@/helpers/calculations'
 </script>

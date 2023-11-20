@@ -10,7 +10,7 @@
     >
       <slot
         name="list"
-        v-bind="item"
+        v-bind="{ ...item, price: currencyStore.format(item.price, true) }"
       />
     </li>
   </ul>
@@ -22,8 +22,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useCatalogStore } from '@/store/Shopping/catalog'
+import { useCurrencyStore } from '@/store/Common/currency'
 
 const catalogStore = useCatalogStore()
+const currencyStore = useCurrencyStore()
 
 onMounted(() => {
   if (catalogStore.catalog.length > 0) return
